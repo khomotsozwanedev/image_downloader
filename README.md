@@ -47,7 +47,9 @@ Bash script wrapping a Node.js app for image downloading from single or paginate
 
 1.  `git clone <repository_url>`
 2.  `cd <repository_directory>`
-3.  Ensure `./dist/index.js` exists (build Node.js app if needed).
+3.  npm install
+4. npm run build
+5.  Ensure `./dist/index.js` exists (build Node.js app if needed).
 
 ## Usage
 
