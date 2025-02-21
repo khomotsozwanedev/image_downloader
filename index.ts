@@ -1,6 +1,6 @@
 import Downloader from "./src/downloader";
 
-const filePath = "./keys/file.json";
+const filePath = "/assets/keys/file.json";
 
 /**
  * Parses command-line arguments and initiates the download process.
