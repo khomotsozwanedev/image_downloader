@@ -1,6 +1,7 @@
 {
     "source": {
       "include": ["src"],
+      "exclude": ["test", "src/**/*.test.ts", "src/**/*.spec.ts", "src/**/*.test.js" ],
       "includePattern": ".+\\.js(doc|x)?$",
       "excludePattern": "(^|\\/|\\\\)_"
     },
