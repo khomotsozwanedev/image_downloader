@@ -1,5 +1,7 @@
 import Downloader from "./src/downloader";
 
+const filePath = "./keys/file.json";
+
 /**
  * Parses command-line arguments and initiates the download process.
  */
@@ -15,7 +17,9 @@ async function main() {
 
     // Extract parameters, handling potential undefined values
     const url: string | undefined = params.url as string | undefined;
-    const isPaginated: boolean | undefined = params.isPaginated as boolean | undefined;
+    const isPaginated : boolean | undefined = params.isPaginated as boolean | undefined;
+    const isStorageBucket : boolean | undefined = params.isPaginated as boolean | undefined;
+    const storageBucketUrl: string | undefined = params.storageBucketUrl as string | undefined;
     const paginatedUrl: string | undefined = params.paginatedUrl as string | undefined;
     const directoryPath: string | undefined = params.directoryPath as string | undefined;
 
@@ -24,27 +28,38 @@ async function main() {
     console.log("isPaginated:", isPaginated ?? false); // Default to false if not provided
     console.log("paginatedUrl:", paginatedUrl ?? "Not provided");
     console.log("directoryPath:", directoryPath ?? "/images"); // Default to /images if not provided
-
+    console.log("storageBucket:", isStorageBucket ?? false); // Default to /images if not provided
+    console.log("storageBucketUrl:", storageBucketUrl ?? "Not provided");
 
     console.log("Downloader is running");
 
     try {
         // Create a Downloader instance, providing the directory path (or default)
-        const downloadClient = new Downloader(directoryPath || "/images");
+        const downloadClient = new Downloader(directoryPath || "/images", filePath || "");
 
-        // Conditional download logic based on isPaginated flag
-        if (isPaginated) {
-            // Paginated download
-            if (!paginatedUrl) {
-                throw new Error("Paginated URL is required when --isPaginated is true.");
+        if(!isStorageBucket){
+
+            // Conditional download logic based on isPaginated flag
+            if (isPaginated) {
+                // Paginated download
+                if (!paginatedUrl) {
+                    throw new Error("Paginated URL is required when --isPaginated is true.");
+                }
+                await downloadClient.downloadPaginatedFiles(paginatedUrl);
+            }else {
+                // Single URL download
+                if (!url) {
+                    throw new Error("URL is required when --isPaginated is false.");
+                }
+                await downloadClient.downloadFile(url);
             }
-            await downloadClient.downloadPaginatedFiles(paginatedUrl);
-        } else {
-            // Single URL download
-            if (!url) {
-                throw new Error("URL is required when --isPaginated is false.");
+
+        }else{
+            if(!storageBucketUrl){
+                throw new Error("Storage Bucket URL is required when --storageBucketUrl is true.");
             }
-            await downloadClient.downloadFile(url);
+            
+            await downloadClient.downloadStorageBucketFiles(storageBucketUrl);
         }
 
         console.log("Download process completed successfully."); // Indicate success
