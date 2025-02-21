@@ -6,9 +6,13 @@
 
 **Author:** Khomotso Zwane
 
-**Version:** 0.0.1
+**Version:** 1.0.2
 
 **License:** Apache License 2.0
+
+
+## GH Documentation
+- [https://khomotsozwanedev.github.io/image_downloader/docs/](https://khomotsozwanedev.github.io/image_downloader/docs/)
 
 ## Table of Contents
 
@@ -42,14 +46,17 @@ Bash script wrapping a Node.js app for image downloading from single or paginate
 *   Bash
 *   Node.js and npm
 *   Node.js app (`./dist/index.js`)
+*   Service Account key 
 
 ## Installation
 
 1.  `git clone <repository_url>`
 2.  `cd <repository_directory>`
-3.  npm install
-4. npm run build
-5.  Ensure `./dist/index.js` exists (build Node.js app if needed).
+3.  add the service account to /src/images/keys/
+4.  name the key file.json
+5.  npm install
+6. npm run build
+7.  Ensure `./dist/index.js` exists (build Node.js app if needed).
 
 ## Usage
 
@@ -60,9 +67,13 @@ Bash script wrapping a Node.js app for image downloading from single or paginate
 ### Options:
 -- url <URL>: The base URL for downloads (required if isPaginated is not used). 🔗
 
+-- storageBucketUrl <URI>: The GCP URi for downloads (required if isStorageBucket is not used). 🔗
+
 -- isPaginated: Flag indicating paginated downloads. 📄
 
--- paginatedUrl <URL>: URL for paginated downloads (required if --isPaginated is used). 🔗
+-- isStorageBucket: Flag indicating paginated downloads. 📄
+
+-- paginatedUrl <URL>: URL for paginated downloads (required if --isPaginated is used and --isStorageBucket is not used). 🔗
 
 -- directoryPath <PATH>: Directory to save downloads (default: $HOME/downloader). 📁
 
@@ -84,6 +95,9 @@ Download a single image:
 
 Download images from a paginated list: 
 - ./prepare.sh --url https://example.com/images --paginatedUrl https://example.com/images?page= --directoryPath /workspaces/image_downloader/images (Replace with your actual URLs and pagination scheme)
+
+Download images from a google storage bucket list: 
+- ./prepare.sh -- isStorageBucket true -- storageBucketUrl gs://bucket-name  --directoryPath /workspaces/image_downloader/images (Replace with your actual URLs and pagination scheme)
 
 ## Contributing 🤝
 

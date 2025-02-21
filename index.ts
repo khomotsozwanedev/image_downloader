@@ -1,6 +1,6 @@
 import Downloader from "./src/downloader";
 
-const filePath = "./keys/file.json";
+const filePath = "/assets/keys/file.json";
 
 /**
  * Parses command-line arguments and initiates the download process.
@@ -19,7 +19,7 @@ async function main() {
     const url: string | undefined = params.url as string | undefined;
     const isPaginated : boolean | undefined = params.isPaginated as boolean | undefined;
     const isStorageBucket : boolean | undefined = params.isPaginated as boolean | undefined;
-    const storageBucketUrl: string | undefined = params.storageBucketUrl as string | undefined;
+    const storageBucketUri: string | undefined = params.storageBucketUri as string | undefined;
     const paginatedUrl: string | undefined = params.paginatedUrl as string | undefined;
     const directoryPath: string | undefined = params.directoryPath as string | undefined;
 
@@ -29,7 +29,7 @@ async function main() {
     console.log("paginatedUrl:", paginatedUrl ?? "Not provided");
     console.log("directoryPath:", directoryPath ?? "/images"); // Default to /images if not provided
     console.log("storageBucket:", isStorageBucket ?? false); // Default to /images if not provided
-    console.log("storageBucketUrl:", storageBucketUrl ?? "Not provided");
+    console.log("storageBucketUri:", storageBucketUri ?? "Not provided");
 
     console.log("Downloader is running");
 
@@ -55,11 +55,11 @@ async function main() {
             }
 
         }else{
-            if(!storageBucketUrl){
+            if(!storageBucketUri){
                 throw new Error("Storage Bucket URL is required when --storageBucketUrl is true.");
             }
             
-            await downloadClient.downloadStorageBucketFiles(storageBucketUrl);
+            await downloadClient.downloadStorageBucketFiles(storageBucketUri);
         }
 
         console.log("Download process completed successfully."); // Indicate success
