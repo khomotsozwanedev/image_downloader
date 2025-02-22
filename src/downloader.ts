@@ -26,7 +26,7 @@ export default class Downloader {
         this.keyFilePath = keyFilePath;
 
         // Create the directory if it doesn't exist.  Good practice to do this in the constructor.
-        fs.mkdirSync(this.fileDirectory, { recursive: true }); // Synchronous for constructor.
+        //fs.mkdirSync(this.fileDirectory, { recursive: true }); // Synchronous for constructor.
     }
 
     /**
