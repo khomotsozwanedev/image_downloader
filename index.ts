@@ -18,7 +18,7 @@ async function main() {
     // Extract parameters, handling potential undefined values
     const url: string | undefined = params.url as string | undefined;
     const isPaginated : boolean | undefined = params.isPaginated as boolean | undefined;
-    const isStorageBucket : boolean | undefined = params.isPaginated as boolean | undefined;
+    const isStorageBucket : boolean | undefined = params.isStorageBucket as boolean | undefined;
     const storageBucketUri: string | undefined = params.storageBucketUri as string | undefined;
     const paginatedUrl: string | undefined = params.paginatedUrl as string | undefined;
     const directoryPath: string | undefined = params.directoryPath as string | undefined;
