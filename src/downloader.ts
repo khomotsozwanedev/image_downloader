@@ -14,16 +14,13 @@ import { StorageManager } from './storage_manager';
 export default class Downloader {
 
     private fileDirectory: string;
-    private keyFilePath : string;
 
     /**
      * Initializes a new instance of the Downloader class.
      * @param {string} fileDirectory - The directory where downloaded files will be saved.
-     * @param {string} keyFilePath - The path to the service account key file for Google Cloud Storage.
      */
-    constructor(fileDirectory: string, keyFilePath : string ) {
+    constructor(fileDirectory: string) {
         this.fileDirectory = fileDirectory;
-        this.keyFilePath = keyFilePath;
 
         // Create the directory if it doesn't exist.  Good practice to do this in the constructor.
         //fs.mkdirSync(this.fileDirectory, { recursive: true }); // Synchronous for constructor.
@@ -61,7 +58,7 @@ export default class Downloader {
     async downloadStorageBucketFiles(storageBucketUrl: string): Promise<void> {
         try {
 
-            const storageManager = new StorageManager(this.keyFilePath);
+            const storageManager = new StorageManager();
 
             const storageFileList : string[] = await storageManager.getStorageBucketUrls(storageBucketUrl);
 
