@@ -1,5 +1,7 @@
 # Image Downloader Script
 
+[![codecov](https://codecov.io/gh/khomotsozwanedev/image_downloader/graph/badge.svg?token=2cQ5ZRr3xb)](https://codecov.io/gh/khomotsozwanedev/image_downloader)
+
 ![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
 [![Code Coverage](https://img.shields.io/badge/Coverage-10%25-brightgreen)](https://example.com/coverage)
 [![Passing Tests](https://img.shields.io/badge/Tests-Passing-brightgreen)](https://example.com/tests)

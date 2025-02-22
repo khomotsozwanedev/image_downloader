@@ -96,15 +96,17 @@ fi
 log "📁 Download directory set to: $directoryPath ✅"
 
 # 🚀 Calling the Node.js app...
-nodejs_app="./dist/index.js" # 📍 Replace with the actual path!
+nodejs_app="./dist/index.js" # 📍 
 
 log "✨ Calling Node.js app: $nodejs_app..."
 
-# *** KEY CHANGE: Corrected the conditional logic for calling the Node.js app ***
-if [ "$isPaginated" = true ]; then
-    node "$nodejs_app" "url=$url" "isPaginated=$isPaginated" "paginatedUrl=$paginatedUrl" "directoryPath=$directoryPath" "storageBucketUri=$storageBucketUri" "isStorageBucket=$isStorageBucket"
+# Corrected the conditional logic for calling the Node.js app
+if [ "$isStorageBucket" = true ]; then
+    node "$nodejs_app" "storageBucketUri=$storageBucketUri" "isStorageBucket=$isStorageBucket"
+elif [ "$isPaginated" = true ]; then
+    node "$nodejs_app" "url=$url" "isPaginated=$isPaginated" "paginatedUrl=$paginatedUrl" "directoryPath=$directoryPath"
 else
-    node "$nodejs_app" "url=$url" "isPaginated=$isPaginated" "directoryPath=$directoryPath" "storageBucketUri=$storageBucketUri" "isStorageBucket=$isStorageBucket"  # Removed paginatedUrl
+    node "$nodejs_app" "url=$url" "isPaginated=$isPaginated" "directoryPath=$directoryPath"
 fi
 
 # 🎁 Capturing the output...
