@@ -8,7 +8,7 @@
 
 **Author:** Khomotso Zwane
 
-**Version:** 1.0.5
+**Version:** 1.0.11
 
 **License:** Apache License 2.0
 
@@ -66,22 +66,29 @@ Bash script wrapping a Node.js app for image downloading from single or paginate
 ./prepare.sh [OPTIONS]
 ```
 
-### Options:
--- url <URL>: The base URL for downloads (required if isPaginated is not used). 🔗
+## Options:
 
--- storageBucketUrl <URI>: The GCP URi for downloads (required if isStorageBucket is not used). 🔗
+--url <URL>        : The base URL for downloading a single image. Required unless --isPaginated or --isStorageBucket is used.
+                     (e.g., --url https://example.com/image.jpg) 🔗
 
--- isPaginated: Flag indicating paginated downloads. 📄
+--storageBucketUri <GCS_URI> : The Google Cloud Storage (GCS) URI for downloading images from a bucket. Required if --isStorageBucket is used.
+                                (e.g., --storageBucketUri gs://your-bucket-name/path/to/images/) ☁️
 
--- isStorageBucket: Flag indicating paginated downloads. 📄
+--isPaginated      : Flag indicating that the URL provided is for a paginated list of images.
+                     Use with --paginatedUrl and --url. 📄
 
--- paginatedUrl <URL>: URL for paginated downloads (required if --isPaginated is used and --isStorageBucket is not used). 🔗
+--isStorageBucket  : Flag indicating that images should be downloaded from a Google Cloud Storage bucket.
+                     Use with --storageBucketUri. ☁️
 
--- directoryPath <PATH>: Directory to save downloads (default: $HOME/downloader). 📁
+--paginatedUrl <URL> : The base URL for paginated image lists. Required if --isPaginated is used, and --isStorageBucket is not used.
+                       (e.g., --paginatedUrl https://example.com/images?page=) 📄
 
--- help: Display this help message. ❓
+--directoryPath <PATH> : The local directory to save downloaded images. Defaults to $HOME/downloader.
+                         (e.g., --directoryPath /path/to/save/images) 📁
 
--- version: Display script version. ℹ️
+--help             : Display this help message and usage instructions. ❓
+
+--version          : Display the script's version number. ℹ️
 
 
 #### Examples:
@@ -99,7 +106,7 @@ Download images from a paginated list:
 - ./prepare.sh --url https://example.com/images --paginatedUrl https://example.com/images?page= --directoryPath /workspaces/image_downloader/images (Replace with your actual URLs and pagination scheme)
 
 Download images from a google storage bucket list: 
-- ./prepare.sh -- isStorageBucket true -- storageBucketUrl gs://bucket-name  --directoryPath /workspaces/image_downloader/images (Replace with your actual URLs and pagination scheme)
+- ./prepare.sh -- isStorageBucket true -- storageBucketUri gs://bucket-name  --directoryPath /workspaces/image_downloader/images (Replace with your actual URLs and pagination scheme)
 
 ## Contributing 🤝
 
@@ -111,8 +118,8 @@ Please report any issues on the [GitHub Issues page](https://github.com/khomotso
 
 ## TODO 📝
 
-*   Add more robust error handling in the shell script.
-*   Include more detailed Node.js code snippets in the README.
-*   Add unit tests for the shell script and the Node.js app.
-*   Implement progress reporting during downloads.
-*   Consider adding support for different image formats.
+* [x] Include more detailed Node.js code snippets in the README. ✅
+* [x] Add unit tests for the shell script and the Node.js app. ✅
+* [x] Implement progress reporting during downloads. ✅
+* [ ] Add more robust error handling in the shell script.
+* [ ] Consider adding support for different image formats.

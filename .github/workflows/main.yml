@@ -57,7 +57,7 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          slug: khomotsozwanedev/access_mgmt_api
+          slug: khomotsozwanedev/image_downloader
 
       - name: Generate JSDoc
         run: npm run doc
