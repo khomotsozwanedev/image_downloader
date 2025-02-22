@@ -30,7 +30,7 @@ help() {
 
 # Function to display version
 version() {
-    echo "Download Script Version 1.0.7"  # Update version as needed
+    echo "Download Script Version 1.0.8"  # Update version as needed
     exit 0
 }
 
@@ -89,6 +89,7 @@ fi
 # 📂 Creating the directory (if it doesn't exist)...
 log "📁 Creating download directory: $directoryPath..."
 sudo mkdir -p "$directoryPath"
+
 if [ ! -d "$directoryPath" ]; then
     log "🔥 Failed to create directory: $directoryPath 💥"
     exit 1
