@@ -1,6 +1,6 @@
 {
   "name": "image_downloader",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "",
   "main": "index.js",
   "keywords": [
@@ -14,7 +14,7 @@
     "dev": "nodemon --watch --ext 'ts,json' --exec 'npm run build && npm run start'",
     "build": "tsc",
     "postbuild": "copyfiles -u 1 src/assets/**/* dist/",
-    "start": "node dist/index.js",
+    "start": "sleep 2 && node dist/index.js",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "doc": "jsdoc -c jsdoc.conf.json"
