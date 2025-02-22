@@ -8,7 +8,7 @@
 
 **Author:** Khomotso Zwane
 
-**Version:** 1.0.2
+**Version:** 1.0.5
 
 **License:** Apache License 2.0
 

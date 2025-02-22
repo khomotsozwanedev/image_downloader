@@ -28,7 +28,7 @@ async function main() {
     console.log("isPaginated:", isPaginated ?? false); // Default to false if not provided
     console.log("paginatedUrl:", paginatedUrl ?? "Not provided");
     console.log("directoryPath:", directoryPath ?? "/images"); // Default to /images if not provided
-    console.log("storageBucket:", isStorageBucket ?? false); // Default to /images if not provided
+    console.log("isStorageBucket:", isStorageBucket ?? false); // Default to /images if not provided
     console.log("storageBucketUri:", storageBucketUri ?? "Not provided");
 
     console.log("Downloader is running");
