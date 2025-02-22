@@ -50,6 +50,15 @@ jobs:
       - name: Run unit tests
         run: npm run test
 
+      - name: Run code coverage
+        run: npm rum test:coverage
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: khomotsozwanedev/access_mgmt_api
+
       - name: Generate JSDoc
         run: npm run doc
 
@@ -63,4 +72,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      
           
