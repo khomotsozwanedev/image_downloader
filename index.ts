@@ -1,8 +1,4 @@
 import Downloader from "./src/downloader";
-import * as path from 'path';
-
-const filePath = path.join(__dirname, 'assets', 'keys', 'file.json');
-console.log(filePath);
 
 /**
  * Parses command-line arguments and initiates the download process.
@@ -37,7 +33,7 @@ async function main() {
 
     try {
         // Create a Downloader instance, providing the directory path (or default)
-        const downloadClient = new Downloader(directoryPath || "/images", filePath || "");
+        const downloadClient = new Downloader(directoryPath || "/images");
 
         if(!isStorageBucket){
 

@@ -1,4 +1,7 @@
 import { Storage } from '@google-cloud/storage';
+import * as path from 'path';
+import * as fs from 'fs';
+
 
 /**
  * The StorageManager class provides methods to interact with Google Cloud Storage (GCS).
@@ -12,10 +15,15 @@ export class StorageManager {
      * Initializes a new instance of the StorageManager class.
      * @param {string} keyFilePath - The path to the service account key file.
      */
-    constructor(keyFilePath: string) {
+    constructor() {
+
+        const filePath = path.join(__dirname, "..", "assets", "keys", "key.json");
+
         this.storage = new Storage({
-            keyFilename: keyFilePath // Specify the key file path here
+            keyFilename: filePath // Specify the key file path here
         });
+
+        //console.log(this.storage);
     }
 
     /**
@@ -32,6 +40,7 @@ export class StorageManager {
             throw new Error("Invalid GCS URI. It should start with 'gs://'.");
         }
         const bucketAndPath = storageBucketImageUrl.slice(5); // Remove 'gs://'
+        console.log(`bucketPath: ${bucketAndPath}`);
         return `https://storage.googleapis.com/${bucketAndPath}`;
     }
 
@@ -49,7 +58,7 @@ export class StorageManager {
     async getStorageBucketUrls(storageBucket: string): Promise<string[]> {
         try {
             const [files] = await this.storage.bucket(storageBucket).getFiles();
-            return files.map(file => `gs://${storageBucket}/${file.name}`);
+            return files.map(file => `${storageBucket}/${file.name}`);
         } catch (error : any) {
             throw new Error(`Failed to fetch files from bucket ${storageBucket}: ${error.message}`);
         }
