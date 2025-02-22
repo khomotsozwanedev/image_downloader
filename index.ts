@@ -18,7 +18,7 @@ async function main() {
     // Extract parameters, handling potential undefined values
     const url: string | undefined = params.url as string | undefined;
     const isPaginated : boolean | undefined = params.isPaginated as boolean | undefined;
-    const isStorageBucket : boolean | undefined = params.isPaginated as boolean | undefined;
+    const isStorageBucket : boolean | undefined = params.isStorageBucket as boolean | undefined;
     const storageBucketUri: string | undefined = params.storageBucketUri as string | undefined;
     const paginatedUrl: string | undefined = params.paginatedUrl as string | undefined;
     const directoryPath: string | undefined = params.directoryPath as string | undefined;
@@ -28,7 +28,7 @@ async function main() {
     console.log("isPaginated:", isPaginated ?? false); // Default to false if not provided
     console.log("paginatedUrl:", paginatedUrl ?? "Not provided");
     console.log("directoryPath:", directoryPath ?? "/images"); // Default to /images if not provided
-    console.log("storageBucket:", isStorageBucket ?? false); // Default to /images if not provided
+    console.log("isStorageBucket:", isStorageBucket ?? false); // Default to /images if not provided
     console.log("storageBucketUri:", storageBucketUri ?? "Not provided");
 
     console.log("Downloader is running");

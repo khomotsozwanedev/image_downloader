@@ -88,7 +88,7 @@ fi
 
 # 📂 Creating the directory (if it doesn't exist)...
 log "📁 Creating download directory: $directoryPath..."
-mkdir -p "$directoryPath"
+sudo mkdir -p "$directoryPath"
 if [ ! -d "$directoryPath" ]; then
     log "🔥 Failed to create directory: $directoryPath 💥"
     exit 1
