@@ -1,6 +1,8 @@
 import Downloader from "./src/downloader";
+import * as path from 'path';
 
-const filePath = "/assets/keys/file.json";
+const filePath = path.join(__dirname, 'assets', 'keys', 'file.json');
+console.log(filePath);
 
 /**
  * Parses command-line arguments and initiates the download process.
