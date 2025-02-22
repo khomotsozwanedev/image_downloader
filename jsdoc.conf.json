@@ -1,0 +1,18 @@
+{
+    "source": {
+      "include": ["src"],
+      "exclude": ["test", "src/**/*.test.ts", "src/**/*.spec.ts", "src/**/*.test.js" ],
+      "includePattern": ".+\\.js(doc|x)?$",
+      "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "opts": {
+      "destination": "./docs",
+      "recurse": true
+    },
+    "plugins": ["plugins/markdown"],
+    "templates": {
+      "cleverLinks": false,
+      "monospaceLinks": false
+    }
+  }
+  
