@@ -30,7 +30,7 @@ help() {
 
 # Function to display version
 version() {
-    echo "Download Script Version 1.0.2"  # Update version as needed
+    echo "Download Script Version 1.0.4"  # Update version as needed
     exit 0
 }
 
